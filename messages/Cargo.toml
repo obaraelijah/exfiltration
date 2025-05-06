@@ -1,0 +1,11 @@
+[package]
+name = "messages"
+version = "0.1.0"
+edition = "2021"
+authors = ["Elijah Samson <git@obaraelijah.dev>"]
+repository = "https://github.com/obaraelijah/exfiltration"
+license = "MPL-2.0"
+
+[dependencies]
+# Serialization library
+serde = { version = "~1", features = ["derive"] }

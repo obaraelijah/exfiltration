@@ -1,0 +1,30 @@
+[package]
+name = "exfiltration"
+version = "0.1.0"
+edition = "2021"
+authors = ["Elijah Samson <git@obaraelijah.dev>"]
+repository = "https://github.com/obaraelijah/exfiltration"
+license = "MPL-2.0"
+  
+[dependencies]
+# Async runtime
+tokio = { version = ">=1.23.1", features = ["rt-multi-thread", "sync", "macros", "fs"] }
+futures = { version = "~0.3" }
+ 
+# Cli parser
+clap = { version = "~4", features = ["derive"] }
+ 
+# icmp lib
+surge-ping = { version = "~0.8" }
+ 
+# Serialization library
+serde = { version = "~1", features = ["derive"] }
+serde_json = { version = "~1" }
+ 
+# Compression library
+lz4_flex = { version = "~0.11" }
+ 
+# rng
+rand = { version = "~0.8" }
+ 
+messages = { version = "*", path = "../messages" }

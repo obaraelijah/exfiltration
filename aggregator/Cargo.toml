@@ -1,0 +1,34 @@
+[package]
+name = "aggregator"
+version = "0.1.0"
+edition = "2024"
+authors = ["Elijah Samson <git@obaraelijah.dev>"]
+repository = "https://github.com/obaraelijah/exfiltration"
+license = "MPL-2.0"
+
+[dependencies]
+# Async runtime
+tokio = { version = ">=1.23.1", features = ["rt-multi-thread", "sync", "macros"] }
+ 
+# Logging
+log = { version = "~0.4" }
+env_logger = { version = "~0.10" }
+ 
+# Cli parser
+clap = { version = "~4", features = ["derive"] }
+ 
+# Package capturing
+pcap = { version = "~1" }
+ 
+# Parsing packets
+etherparse = { version = "0.13" }
+ 
+# Serialization library
+serde = { version = "~1", features = ["derive"] }
+toml = { version = "~0.7" }
+serde_json = { version = "~1" }
+ 
+# Compression library
+lz4_flex = { version = "~0.11" }
+ 
+messages = { version = "*", path = "../messages" }
