@@ -1,0 +1,44 @@
+[package]
+name = "exfiltration"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# Command line argument parsing
+clap = { version = "4.4", features = ["derive"] }  
+
+# Async runtime
+tokio = { version = "1.32", features = ["full"] } 
+
+# Error handling
+anyhow = "1.0"  
+
+# Encoding utilities
+base64 = "0.21"  
+
+# DNS operations
+dns-lookup = "2.0"
+
+# HTTP client
+reqwest = { version = "0.11", features = ["blocking"] } 
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] } 
+
+# JSON support
+serde_json = "1.0"
+
+# Hex encoding/decoding
+hex = "0.4"
+
+# Advanced DNS operations
+trust-dns-client = "0.22"
+
+# Random utilities for stealth
+rand = "0.8" 
+
+# Time utilities
+chrono = "0.4"  
+
+# Encryption capabilities
+aes-gcm = "0.10"  
