@@ -139,6 +139,4 @@ pub async fn start_capture(config: &Config) -> Result<(), String> {
             }
         }
     }
-
-    Ok(())
 }

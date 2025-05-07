@@ -1,7 +1,7 @@
 [package]
 name = "aggregator"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 authors = ["Elijah Samson <git@obaraelijah.dev>"]
 repository = "https://github.com/obaraelijah/exfiltration"
 license = "MPL-2.0"
