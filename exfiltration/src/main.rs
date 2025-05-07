@@ -24,6 +24,10 @@ pub struct Cli {
     /// Size of the chunks
     #[clap(long, default_value_t = 1480)]
     chunk_size: usize,
+
+    /// Delay between the ping requests in ms
+    #[clap(long, default_value_t = 100)]
+    delay: u64,
 }
 
 #[tokio::main]
@@ -93,7 +97,11 @@ async fn main() -> Result<(), String> {
             .ping(PingSequence(identifier), &serialized)
             .await
             .map_err(|e| format!("Could not send ping: {e}"))?;
+
+        sleep(Duration::from_millis(cli.delay)).await;
     }
+
+    sleep(Duration::from_secs(1)).await;
 
     let eot = Messages::EndOfTransmission { identifier };
     client
